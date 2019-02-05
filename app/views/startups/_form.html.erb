@@ -2,10 +2,8 @@
 <%= form_with model: @startup, local: true do |form| %>
  
   <% if @startup.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize @startup.errors.count, "error" %> prohibited this startup from being saved:
-      </h2>
+    <div class="alert alert-danger">
+      <%= pluralize @startup.errors.count, "error" %> prohibited this startup from being saved:
       <ul>
         <% @startup.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -14,18 +12,22 @@
     </div>
   <% end %>
  
-  <p>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </p>
+  <div class="form-group">
+    <div class="textfield-box">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: 'form-control' %>
+    </div>
+  </div>
+ 
+  <div class="form-group">
+    <div class="textfield-box">
+      <%= form.label :description %>
+      <%= form.text_area :description, class: 'form-control' %>
+    </div>
+  </div>
  
   <p>
-    <%= form.label :description %><br>
-    <%= form.text_area :description %>
-  </p>
- 
-  <p>
-    <%= form.submit %>
+    <%= form.submit class: 'btn' %>
   </p>
  
 <% end %>

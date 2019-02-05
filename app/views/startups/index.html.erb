@@ -1,22 +1,35 @@
-<h1>Listing startups</h1>
-
-<%= link_to 'New startup', new_startup_path %>
-
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th colspan="2"></th>
-    </tr>
-    <% @startups.each do |startup| %>
-        <tr>
-            <td><%= startup.name %></td>
-            <td><%= startup.description %></td>
-            <td><%= link_to 'Show', startup_path(startup) %></td>
-            <td><%= link_to 'Edit', edit_startup_path(startup) %></td>
-            <td><%= link_to 'Destroy', startup_path(startup),
-                    method: :delete,
-                    data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-    <% end %>
-</table>
+<div class="card">
+    <div class="card-header d-flex pr-0">
+        <h5 class="card-title mb-0">Startups</h5>
+        <div class="card-actions ml-auto py-0">
+            <%= link_to 'New startup', new_startup_path, class: 'btn btn-primary' %>
+        </div>
+    </div>
+    <table class="table mb-0">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @startups.each do |startup| %>
+                <tr>
+                    <td scope="row"><%= startup.name %></td>
+                    <td><%= startup.description %></td>
+                    <td>
+                        <%= link_to 'Show', startup_path(startup), class: 'btn btn-sm' %>
+                        <% if user_signed_in? %>
+                            <%= link_to 'Edit', edit_startup_path(startup), class: 'btn btn-sm' %>
+                            <%= link_to 'Delete', startup_path(startup),
+                                method: :delete,
+                                data: { confirm: 'Are you sure?' },
+                                class: 'btn btn-sm' %>
+                        <% end %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
