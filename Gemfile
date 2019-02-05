@@ -45,7 +45,6 @@ gem "material_icons", "~> 2.2"
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
-  gem "rspec-rails", "~> 3.8"
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
@@ -63,6 +62,8 @@ group :development do
 end
 
 group :test do
+  gem "rspec-rails", "~> 3.8"
+  gem "simplecov", "~> 0.16.1"
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
