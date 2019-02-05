@@ -1,0 +1,22 @@
+<h1>Listing startups</h1>
+
+<%= link_to 'New startup', new_startup_path %>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th colspan="2"></th>
+    </tr>
+    <% @startups.each do |startup| %>
+        <tr>
+            <td><%= startup.name %></td>
+            <td><%= startup.description %></td>
+            <td><%= link_to 'Show', startup_path(startup) %></td>
+            <td><%= link_to 'Edit', edit_startup_path(startup) %></td>
+            <td><%= link_to 'Destroy', startup_path(startup),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+</table>
