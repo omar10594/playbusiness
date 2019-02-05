@@ -1,0 +1,11 @@
+
+<tr>
+    <td scope="row"><%= number_to_currency investment.amount %></td>
+    <td><%= number_to_currency investment.wallet_amount %></td>
+    <td>
+        <%= link_to 'Remove invest', [investment.startup, investment],
+            method: :delete,
+            data: { confirm: 'Are you sure?' },
+            class: 'btn btn-sm' %>
+    </td>
+</tr>

@@ -3,13 +3,49 @@
         <h3 class="card-title mb-0">
             <%= @startup.name %>
         </h3>
-        <div class="card-actions ml-auto py-0">
-            <%= link_to 'Edit', edit_startup_path(@startup), class: 'btn btn-primary' %>
-        </div>
+        <% if user_signed_in? %>
+            <div class="card-actions ml-auto py-0">
+                <%= link_to 'Edit', edit_startup_path(@startup), class: 'btn btn-primary' %>
+            </div>
+        <% end %>
     </div>
     <div class="card-body">
         <p class="card-text">
             <%= @startup.description %>
         </p>
+        <p>
+            Total invested: <%= number_to_currency(@startup.investments.sum(:amount)) %>
+        </p>
     </div>
 </div>
+
+<% if user_signed_in? %>
+    <div class="card mt-3">
+        <div class="card-header d-flex pr-0">
+            <h5 class="card-title mb-0">Your Investments</h5>
+        </div>
+        <table class="table mb-0">
+            <thead>
+                <tr>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Wallet amount</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%= render @startup.investments.where(user_id: current_user.id) %>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card mt-3">
+        <div class="card-header d-flex">
+            <h3 class="card-title mb-0">
+                Invest
+            </h3>
+        </div>
+        <div class="card-body">
+            <%= render 'investments/form' %>
+        </div>
+    </div>
+<% end %>

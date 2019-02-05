@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_05_054014) do
+ActiveRecord::Schema.define(version: 2019_02_05_085259) do
+
+  create_table "investments", force: :cascade do |t|
+    t.integer "amount"
+    t.integer "wallet_amount"
+    t.integer "startup_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["startup_id"], name: "index_investments_on_startup_id"
+    t.index ["user_id"], name: "index_investments_on_user_id"
+  end
 
   create_table "startups", force: :cascade do |t|
     t.string "name"

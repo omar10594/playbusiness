@@ -1,0 +1,28 @@
+<%= form_with(model: [@startup, @startup.investments.build], local: true) do |form| %>
+    <div class="row">
+
+        <div class="col-6">
+            <div class="form-group">
+                <div class="textfield-box">
+                    <%= form.label :amount %>
+                    <%= form.number_field :amount, class: 'form-control', step: :any %>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="form-group">
+                <div class="textfield-box">
+                <%= form.label :wallet_amount %>
+                <%= form.number_field :wallet_amount, class: 'form-control', step: :any %>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <p>
+        <%= form.submit 'Invest', class: 'btn' %>
+    </p>
+<% end %>
