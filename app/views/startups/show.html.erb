@@ -39,6 +39,30 @@
     </div>
 
     <div class="card mt-3">
+        <div class="card-header d-flex pr-0">
+            <h5 class="card-title mb-0">January promotion</h5>
+        </div>
+        <table class="table mb-0">
+            <thead>
+                <tr>
+                    <th scope="col">Límite inferior</th>
+                    <th scope="col">Límite superior</th>
+                    <th scope="col">Bonificación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% january_promotion_table(current_user).each do |row| %>
+                    <tr>
+                        <td scope="row"><%= number_to_currency row[:lower_limit] %></td>
+                        <td><%= number_to_currency row[:upper_limit] %></td>
+                        <td><%= number_to_percentage row[:bonus] %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card mt-3">
         <div class="card-header d-flex">
             <h3 class="card-title mb-0">
                 Invest
