@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  description: MyText
+  name: My Startup
+  description: Awesome Startup to invest
 
 two:
-  name: MyString
-  description: MyText
+  name: My other Startup
+  description: Awesome Startup to invest
